@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.8.1"
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+ext {
+    versions = [
+            allure      : '2.27.0',
+            assertj     : '3.25.3',
+            restAssured : '5.4.0',
+            junit5      : '5.10.2',
+            lombok      : '1.18.32',
+            commonsCodec: '1.17.0',
+            spring      : '3.3.0',
+            jackson     : '2.17.1'
+    ]
+}
+
+dependencies {
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$versions.junit5")
+    implementation("org.junit.jupiter:junit-jupiter-api:$versions.junit5")
+
+    implementation("io.rest-assured:rest-assured:$versions.restAssured")
+    implementation("commons-codec:commons-codec:$versions.commonsCodec")
+
+    implementation("io.qameta.allure:allure-assertj:$versions.allure")
+    implementation("io.qameta.allure:allure-junit5:$versions.allure")
+
+    implementation("org.springframework.boot:spring-boot-starter:$versions.spring")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:$versions.spring")
+
+    implementation("com.fasterxml.jackson.core:jackson-databind:$versions.jackson")
+
+    compileOnly("org.projectlombok:lombok:$versions.lombok")
+    annotationProcessor("org.projectlombok:lombok:$versions.lombok")
+
+    testCompileOnly("org.projectlombok:lombok:$versions.lombok")
+    testAnnotationProcessor("org.projectlombok:lombok:$versions.lombok")
+}
+
+test {
+    useJUnitPlatform()
+}
