@@ -19,7 +19,7 @@ public class PostsController {
             .log().body();
     }
 
-    ValidatableResponse get(String postNumber, String uuid) {
+    ValidatableResponse get(int postNumber, String uuid) {
         return RestAssured.given()
             .log().all()
             .header("test-uuid", uuid)
@@ -28,11 +28,23 @@ public class PostsController {
             .log().body();
     }
 
-    ValidatableResponse getComments(String postNumber, String uuid) {
+    ValidatableResponse getComments(int postId, String uuid) {
         return RestAssured.given()
+            .log().all()
             .header("test-uuid", uuid)
-            .get(JsonPlaceholderUrlsEnum.POSTS.getUrl() + "/" + postNumber + "/" + "comments")
-            .then();
+            .get(JsonPlaceholderUrlsEnum.POSTS.getUrl() + "/" + postId + "/" + "comments")
+            .then()
+            .log().body();
+    }
+
+    ValidatableResponse getComment(int postId, String uuid) {
+        return RestAssured.given()
+            .log().all()
+            .header("test-uuid", uuid)
+            .pathParam("postId", postId)
+            .get(JsonPlaceholderUrlsEnum.COMMENTS.getUrl())
+            .then()
+            .log().body();
     }
 
 
