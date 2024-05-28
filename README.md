@@ -10,5 +10,5 @@ You can run all test by running command line command:   ./gradlew :test --tests 
 No additional parameters required.
 
 **Note:**
-Two test will fail because of the server side problems (see test comments)
+Two tests will fail because of the server side problems (see test comments)
 
