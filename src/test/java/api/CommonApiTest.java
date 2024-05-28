@@ -1,3 +1,5 @@
+package api;
+
 import com.salmon.TestApplication;
 import com.salmon.common.config.RestClientConfig;
 import com.typicode.jsonPlaceholder.api.posts.PostsService;

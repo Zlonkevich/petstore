@@ -61,7 +61,7 @@ public class PutPostsAPITest {
     public void putPostsShouldNotUpdateAPostTest() {
         log.info("putPostsShouldNotUpdateAPostTest started...");
         var uuid = UUID.randomUUID().toString();
-        log.info("Test will fail and this is OK, because the server responded with incorrect response code.");
+        log.info("Test will fail and this is OK, because the server responded with incorrect response code: 500 instead of 404");
 
         // test params
         int responseCode = 404;

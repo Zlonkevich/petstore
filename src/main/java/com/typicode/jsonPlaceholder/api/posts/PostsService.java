@@ -110,6 +110,4 @@ public class PostsService {
             .body()
             .as(PutResponse200s.class);
     }
-
-
 }

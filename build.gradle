@@ -19,6 +19,7 @@ ext {
             assertj     : '3.25.3',
             restAssured : '5.4.0',
             junit5      : '5.10.2',
+            junit5Agg   : '1.10.2',
             lombok      : '1.18.32',
             commonsCodec: '1.17.0',
             spring      : '3.3.0',
@@ -29,6 +30,7 @@ ext {
 dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$versions.junit5")
     implementation("org.junit.jupiter:junit-jupiter-api:$versions.junit5")
+    testImplementation("org.junit.platform:junit-platform-suite:$versions.junit5Agg")
 
     implementation("io.rest-assured:rest-assured:$versions.restAssured")
     implementation("commons-codec:commons-codec:$versions.commonsCodec")
