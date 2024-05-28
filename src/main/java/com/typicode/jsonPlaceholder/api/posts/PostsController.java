@@ -1,6 +1,8 @@
 package com.typicode.jsonPlaceholder.api.posts;
 
 import com.typicode.jsonPlaceholder.api.JsonPlaceholderUrlsEnum;
+import com.typicode.jsonPlaceholder.api.posts.post.Post;
+import com.typicode.jsonPlaceholder.api.posts.put.PostEntity;
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +30,19 @@ public class PostsController {
             .log().body();
     }
 
-    ValidatableResponse getComments(int postId, String uuid) {
+    // https://jsonplaceholder.typicode.com/comments?postId={postId}
+    ValidatableResponse getCommentsQueryParam(int postId, String uuid) {
+        return RestAssured.given()
+            .log().all()
+            .header("test-uuid", uuid)
+            .queryParam("postId", postId)
+            .get(JsonPlaceholderUrlsEnum.COMMENTS.getUrl())
+            .then()
+            .log().body();
+    }
+
+    // https://jsonplaceholder.typicode.com/posts/{postId}/comments
+    ValidatableResponse getCommentsPathParam(int postId, String uuid) {
         return RestAssured.given()
             .log().all()
             .header("test-uuid", uuid)
@@ -37,29 +51,25 @@ public class PostsController {
             .log().body();
     }
 
-    ValidatableResponse getComment(int postId, String uuid) {
+    ValidatableResponse post(Post post, String uuid) {
         return RestAssured.given()
             .log().all()
             .header("test-uuid", uuid)
-            .pathParam("postId", postId)
-            .get(JsonPlaceholderUrlsEnum.COMMENTS.getUrl())
+            .body(post)
+            .when()
+            .post(JsonPlaceholderUrlsEnum.POSTS.getUrl())
             .then()
             .log().body();
     }
 
-
-    ValidatableResponse post(String postNumber, String uuid) {
+    ValidatableResponse put(PostEntity post, int postId, String uuid) {
         return RestAssured.given()
+            .log().all()
             .header("test-uuid", uuid)
-            .get(JsonPlaceholderUrlsEnum.POSTS.getUrl())
-            .then();
-    }
-
-    ValidatableResponse put(String postNumber, String uuid) {
-        return RestAssured.given()
-            .header("test-uuid", uuid)
-            .get(JsonPlaceholderUrlsEnum.POSTS.getUrl())
-            .then();
+            .body(post)
+            .put(JsonPlaceholderUrlsEnum.POSTS.getUrl() + "/" + postId)
+            .then()
+            .log().body();
     }
 
     ValidatableResponse patch(String postNumber, String uuid) {
