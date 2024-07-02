@@ -117,4 +117,23 @@ public class LeetCode {
 
         return res;
     }
+
+    // Given an integer n, return the number of positive integers in the range [1, n] that have at least one repeated digit.
+    static int repeated(int n) {
+        int iWantTo = 0;
+
+        for (int i = 11; i <= n; i++) {
+            char[] charArr = ("" + i).toCharArray();
+
+            free:
+            for (int j = 0; j < charArr.length - 1; j++) {
+                for (int k = j + 1; k < charArr.length; k++) {
+                    if (charArr[j] == charArr[k]) {
+                        iWantTo++; break free;
+                    }
+                }
+            }
+        }
+        return iWantTo;
+    }
 }
