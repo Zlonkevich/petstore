@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class LeetCode {
 
     public static void main(String[] args) {
-        System.out.println("Answer: " + romanToInteger("LVIII"));
+        System.out.println("answer: " + longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
     }
 
 
@@ -129,11 +129,40 @@ public class LeetCode {
             for (int j = 0; j < charArr.length - 1; j++) {
                 for (int k = j + 1; k < charArr.length; k++) {
                     if (charArr[j] == charArr[k]) {
-                        iWantTo++; break free;
+                        iWantTo++;
+                        break free;
                     }
                 }
             }
         }
         return iWantTo;
+    }
+
+    // Find a longest common prefix
+    public static String longestCommonPrefix(String[] strings) {
+        char[][] chars = new char[strings.length][];
+
+        int length = strings[0].length();
+
+        // fill the chars[][] array
+        for (int i = 0; i < strings.length; i++) {
+            chars[i] = strings[i].toCharArray();
+
+            if (chars[i].length < length) {
+                length = chars[i].length;
+            }
+        }
+
+        String pref = "";
+
+        for (int i = 1; i < chars.length - 1; i++) {
+            for (int j = 0; j < length; j++) {
+                if (chars[0][j] == chars[i + 1][j]){
+                    pref += chars[i][j];
+                }
+            }
+        }
+
+        return pref;
     }
 }
