@@ -1,4 +1,4 @@
-package com.salmon;
+package com.petstore.common;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

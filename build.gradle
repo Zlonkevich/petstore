@@ -51,5 +51,15 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+
+    useJUnitPlatform {
+
+        systemProperty "env", System.getProperty("env")
+
+        if (project.hasProperty("type")) {
+            for (String t : new String(project.getProperty("type")).split(",")) {
+                includeTags(t)
+            }
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.salmon.common.config;
+package com.petstore.common.config;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -10,15 +10,18 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import static io.restassured.mapper.ObjectMapperType.JACKSON_2;
 
-@Service
+@Component
 public class RestClientConfig {
+
+    static {init();}
+
     public static void init() {
         RestAssured.requestSpecification = new RequestSpecBuilder()
-            .setBaseUri(SalmonProjectConfig.getJsonplaceholderBaseUrl())
+            .setBaseUri(PetstoreConfig.getPetstoreBaseUrl())
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)

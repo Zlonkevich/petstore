@@ -1,4 +1,4 @@
-package com.salmon.common.config;
+package com.petstore.common.config;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

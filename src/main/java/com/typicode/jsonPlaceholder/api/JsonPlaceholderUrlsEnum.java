@@ -1,18 +1,18 @@
 package com.typicode.jsonPlaceholder.api;
 
-import com.salmon.common.config.SalmonProjectConfig;
+import com.petstore.common.config.PetstoreConfig;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
 public enum JsonPlaceholderUrlsEnum {
-    POSTS(SalmonProjectConfig.getJsonplaceholderBaseUrl() + "posts"),
-    COMMENTS(SalmonProjectConfig.getJsonplaceholderBaseUrl() + "comments"),
-    ALBUMS(SalmonProjectConfig.getJsonplaceholderBaseUrl() + "albums"),
-    PHOTOS(SalmonProjectConfig.getJsonplaceholderBaseUrl() + "photos"),
-    TODOS(SalmonProjectConfig.getJsonplaceholderBaseUrl() + "todos"),
-    USERS(SalmonProjectConfig.getJsonplaceholderBaseUrl() + "users");
+    POSTS(PetstoreConfig.getPetstoreBaseUrl() + "posts"),
+    COMMENTS(PetstoreConfig.getPetstoreBaseUrl() + "comments"),
+    ALBUMS(PetstoreConfig.getPetstoreBaseUrl() + "albums"),
+    PHOTOS(PetstoreConfig.getPetstoreBaseUrl() + "photos"),
+    TODOS(PetstoreConfig.getPetstoreBaseUrl() + "todos"),
+    USERS(PetstoreConfig.getPetstoreBaseUrl() + "users");
 
     private final String url;
 }
