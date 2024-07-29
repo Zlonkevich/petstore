@@ -23,7 +23,7 @@ public class RestClientConfig {
         RestAssured.requestSpecification = new RequestSpecBuilder()
             .setBaseUri(PetstoreConfig.getPetstoreBaseUrl())
             .setAccept(ContentType.JSON)
-            .setContentType(ContentType.JSON)
+                .setContentType(ContentType.JSON)
             .log(LogDetail.ALL)
             .build();
 

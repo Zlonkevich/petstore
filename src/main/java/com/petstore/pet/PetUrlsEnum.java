@@ -8,6 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PetUrlsEnum {
     PET(PetstoreConfig.getPetstoreBaseUrl() + "pet"),
+    UPLOAD_IMAGE(PetstoreConfig.getPetstoreBaseUrl() + "pet/{petId}/uploadImage"),
     FIND_BY_STATUS(PetstoreConfig.getPetstoreBaseUrl() + "pet/findByStatus");
 
     private final String url;
